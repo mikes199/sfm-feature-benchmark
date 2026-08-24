@@ -1,0 +1,5 @@
+pipeline,scene,f_score,notes
+classical_sift_baseline,Truck,0.2134,COLMAP default exhaustive matching
+splg_exhaustive_strict,Truck,0.2231,LightGlue default (strict) filtering thresholds
+splg_exhaustive_lenient,Truck,0.1884,"Relaxed LightGlue filtering (filter_threshold=0.01, depth/width_confidence=-1); forced matches hallucinate false correspondences"
+splg_retrieval_strict,Truck,0.2312,NetVLAD retrieval pair pruning + strict LightGlue filtering (winner)

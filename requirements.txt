@@ -1,0 +1,11 @@
+# Dependencies for this repo's own scripts (src/, results/).
+# hloc and LightGlue are installed separately, see third_party/SETUP.md --
+# not pinned here to avoid duplicating/conflicting with hloc's own
+# requirements.txt.
+pycolmap>=3.13.0
+open3d
+numpy
+opencv-python
+h5py
+matplotlib
+tqdm

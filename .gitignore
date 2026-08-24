@@ -1,0 +1,28 @@
+# Data & outputs (never meant to be committed to this repo)
+dataset/
+outputs*/
+project_dir/
+exports/
+model_outputs/
+image_sets/
+*.db
+*.h5
+*.ply
+*.bin
+
+# Presentations / internal artifacts
+*.pptx
+
+# Vendored deps (cloned locally per third_party/SETUP.md, not tracked here)
+Hierarchical-Localization/
+TanksAndTemples/
+
+# Tanks & Temples official benchmark submission credentials (never commit)
+t2_submission_credentials.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
