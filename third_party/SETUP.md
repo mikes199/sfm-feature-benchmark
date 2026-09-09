@@ -22,6 +22,21 @@ https://pytorch.org/get-started/locally/ *before* the `pip install -e .` step
 if you need CUDA support. `--recursive` matters: hloc vendors its own
 matcher/extractor submodules under `third_party/`.
 
+**If you're using `pycolmap-cuda12` (see README), pin torch to a CUDA 12.x
+build explicitly** -- a plain `pip install torch torchvision` resolves to the
+newest CUDA line available (CUDA 13 as of this writing), which drags in
+`cuda-toolkit>=13` as a transitive dependency and silently *downgrades* the
+CUDA 12.x toolkit `pycolmap-cuda12` needs (`cuda-toolkit<13,>=12`), breaking
+it:
+```bash
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+pip install --force-reinstall --no-deps pycolmap-cuda12   # restore cuda-toolkit<13 if it got bumped
+```
+Verify both after any torch/pycolmap install or reinstall:
+```bash
+python3 -c "import torch, pycolmap; print(torch.cuda.is_available(), pycolmap.has_cuda)"
+```
+
 Once installed (editable install via `-e .`), `from hloc import ...` resolves
 from any Python environment where it was installed — no need to manually add
 it to `PYTHONPATH`.
