@@ -5,9 +5,21 @@ from pathlib import Path
 
 
 def setup_output_dir(name) -> Path:
-    """Create a fresh (emptied) output directory for a pipeline run."""
+    """Create a fresh (emptied) output directory for a pipeline run.
+
+    Refuses to touch a pre-existing directory whose name doesn't start with
+    "outputs" -- this function deletes everything inside the target
+    directory, so pointing --output-dir at something else (e.g. this repo's
+    own results/ folder) must fail loudly instead of wiping it.
+    """
     outputs = Path(name)
     if outputs.exists():
+        if not outputs.name.startswith("outputs"):
+            raise SystemExit(
+                f"Refusing to clear '{outputs}': its contents would be deleted, but "
+                "its name doesn't start with 'outputs', so this doesn't look like a "
+                "pipeline output directory. Pass a different --output-dir."
+            )
         shutil.rmtree(outputs, ignore_errors=True)
     outputs.mkdir(parents=True, exist_ok=True)
     return outputs

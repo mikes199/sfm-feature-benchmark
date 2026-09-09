@@ -74,7 +74,15 @@ directly from a local clone of it, see `third_party/SETUP.md`.
 
 ## Setup & running
 
+Install `pycolmap` **before** `requirements.txt`, picking the build for your
+platform — both provide the same `pycolmap` import, so whichever you install
+second silently wins if you install both:
+
 ```bash
+pip install pycolmap          # CPU, all platforms
+# or, on Linux with an NVIDIA GPU (CUDA 12):
+pip install pycolmap-cuda12
+
 pip install -r requirements.txt
 ```
 

@@ -2,7 +2,15 @@
 # hloc and LightGlue are installed separately, see third_party/SETUP.md --
 # not pinned here to avoid duplicating/conflicting with hloc's own
 # requirements.txt.
-pycolmap>=3.13.0
+#
+# pycolmap is INTENTIONALLY not listed here -- install it yourself first,
+# picking one of (see README "Setup & running" for details):
+#   pip install pycolmap          (CPU, all platforms)
+#   pip install pycolmap-cuda12   (GPU, Linux only)
+# Installing both, or running `pip install -r requirements.txt` before
+# picking one, silently overwrites whichever was installed second into the
+# same site-packages/pycolmap/ -- there is no version marker that lets pip
+# tell them apart, so it can't warn you.
 open3d
 numpy
 opencv-python
