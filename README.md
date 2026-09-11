@@ -5,9 +5,8 @@ features for Structure-from-Motion reconstruction accuracy, evaluated against
 laser-scanned ground truth on the [Tanks & Temples](https://www.tanksandtemples.org/)
 benchmark.
 
-> **TODO before publishing:** add a result image/GIF here (reconstruction
-> screenshot or SIFT-vs-retrieval-SPLG comparison) — see
-> [`results/images/TODO.md`](results/images/TODO.md).
+![Dense reconstruction of the Truck scene (NetVLAD retrieval + SuperPoint+LightGlue pipeline)](results/images/reconstruction_retrieval_splg.jpg)
+*Dense point cloud, winning pipeline (retrieval + strict SP+LightGlue), Truck scene.*
 
 ## Method
 
